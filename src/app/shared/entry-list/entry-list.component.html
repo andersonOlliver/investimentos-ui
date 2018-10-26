@@ -1,0 +1,23 @@
+<button mat-fab color="primary" (click)="addMethod()">
+  <mat-icon aria-label="Adicionar">add</mat-icon>
+</button>
+
+<mat-table [dataSource]="data" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> Id. </mat-header-cell>
+    <mat-cell *matCellDef="let entry"> {{entry.id}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="value">
+    <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
+    <mat-cell *matCellDef="let entry"> {{entry.usefulValue | currency:'BRL':'symbol':'0.0-2':'pt'}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+    <mat-cell *matCellDef="let entry"> {{entry.date | date: 'dd/MM/yyyy'}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+</mat-table>
